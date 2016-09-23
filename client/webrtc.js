@@ -13,7 +13,7 @@ window.URL = window.URL || window.webkitURL;
 function prepareNewConnection() {
 
     // RTCPeerConnectionを初期化する
-    let pc_config = {"iceServers":[ {"url":"stun:stun.skyway.io:3478"} ]};
+    let pc_config = {"iceServers":[ {"urls":"stun3.l.google.com:19302"} ]};
     let peer = new RTCPeerConnection(pc_config);
 
     // リモートのストリームを受信した場合のイベントをセット
@@ -105,9 +105,6 @@ function cleanupVideoElemet(element) {
 }
 function sendSdp(sessionDescription) {
     console.log('--sending sdp ---');
-    // textForSendSdp.value = sessionDescription.sdp;
-    // textForSendSdp.focus();
-    // textForSendSdp.select();
     let message = JSON.stringify(sessionDescription);
     console.log('sending SDP=' + message);
     ws.send(message);
